@@ -11,13 +11,13 @@ WORKDIR /var/lib/jenkins/workspace/jenkinsjob2
 COPY pom.xml ./
 
 # Update all installed packages
-RUN apt update -y
+RUN yum update -y
 
 # Install Java 11 (Amazon Corretto version)
-RUN apt install java-11-amazon-corretto -y
+RUN yum install java-11-amazon-corretto -y
 
 # Copy all project files into the container
 COPY . .
 
 # Install Maven
-RUN apt install maven -y
+RUN yum install maven -y
