@@ -2,10 +2,10 @@
 FROM amazonlinux
 
 # Define the maintainer of this Dockerfile
-MAINTAINER Sumera <syedasumera366y@gmail.com>
+MAINTAINER "Sumera <syedasumera366y@gmail.com>"
 
 # Set the working directory inside the container
-WORKDIR /var/lib/jenkins/workspace/kenkinsjob2
+WORKDIR /var/lib/jenkins/workspace/jenkinsjob2
 
 # Copy the Maven configuration file
 COPY pom.xml ./
