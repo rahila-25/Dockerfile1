@@ -2,7 +2,7 @@
 FROM amazonlinux:2
 
 # Define the maintainer
-LABEL maintainer="Nadia <nadiasultana6281@gmail.com>"
+LABEL maintainer="rahila <rahilabegum252004@gmail.com>"
 
 # Set the working directory inside the container
 WORKDIR /home/ec2-user
