@@ -1,24 +1,25 @@
-# Specify the base image
+# Use the Amazon Linux 2 base image
 FROM amazonlinux:2
 
-# Define the maintainer of this Dockerfile
+# Define the maintainer
 LABEL maintainer="Sumera <syedasumera366y@gmail.com>"
 
 # Set the working directory inside the container
-WORKDIR /var/lib/jenkins/workspace/jenkinsjob2
+WORKDIR /home/ec2-user
 
-# Copy the Maven configuration file
-COPY pom.xml ./
-
-# Update all installed packages
+# Update the package manager and install required dependencies (Java 11 and Maven)
 RUN yum update -y && \
     yum install -y java-11-amazon-corretto maven
 
-# Install Java 11 (Amazon Corretto version)
-RUN yum install java-11-amazon-corretto -y
+# Copy the Maven configuration file (pom.xml)
+COPY pom.xml ./
 
-# Copy all project files into the container
+# Pre-download Maven dependencies to improve build times
+RUN mvn dependency:resolve
+
+# Copy the rest of the project files into the container
 COPY . .
 
-# Install Maven
-RUN yum install maven -y
+# Default command (optional, useful for testing)
+CMD ["mvn", "clean", "install"]
+
