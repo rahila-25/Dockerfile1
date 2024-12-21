@@ -10,9 +10,6 @@ WORKDIR /var/lib/jenkins/workspace/jenkinsjob2
 # Copy the Maven configuration file
 COPY pom.xml ./
 
-# Pre-download Maven dependencies to improve build times
-RUN mvn dependency:resolve
-
 # Update all installed packages
 RUN yum update -y && \
     yum install -y java-11-amazon-corretto maven
